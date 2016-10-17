@@ -1,0 +1,1718 @@
+@import "includes/reset.less";
+.font(@name){
+	font-family:@name;
+	src:url('../fonts/@{name}.woff') format('woff'),
+		url('../fonts/@{name}.ttf') format('ttf');
+		
+}
+@font-face{
+	.font('AvenirNextRegular');
+}
+@font-face{
+	.font('AvenirNextDemiBold');
+}
+@font-face{
+	.font('AvenirNextMedium');
+}
+@font-face{
+	.font('AvenirNextBold');
+}
+@font-face {
+	.font('AvenirBlack');
+}
+@font-face {
+	.font('AvenirOblique');
+}
+@font-face {
+	.font('AvenirBook');
+}
+@font-face {
+	.font('AvenirHeavy');
+}
+@font-face {
+	.font('AvenirMedium');
+}
+@font-face {
+	.font('AvenirLight');
+}
+body {
+	background:#1A4E99;
+	font-family: 'AvenirBook';
+	font-size: 17px;
+	letter-spacing: 0.2px;
+    overflow-x: hidden;
+    width: 100%;
+}
+.fixed {
+	position: fixed;
+}
+strong, b {
+	font-family: 'AvenirHeavy',sans-serif;
+}
+input{
+	cursor: pointer;
+	padding:0;
+}
+span.uload-number a{
+	color: inherit;
+	text-decoration: none;
+}
+.clear {
+	clear: both;
+	float: none !important;
+}
+.heavy {
+	font-family: 'AvenirHeavy';
+}
+.book{
+	font-family: 'AvenirBook';
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+  position: absolute;
+  top: 0;
+}
+.error{
+	outline: 1px solid #B20707 !important;
+}
+header{
+	width: 100%;
+	background: #fff;
+	height: 66px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	position: relative;
+	#logo {
+		background: url('../img/uload-logo.svg') no-repeat;
+		float:left;
+		width: 135px;
+		height: 47px;
+		margin:10px 20px 9px;
+	}
+	#call-us {
+		float: right;
+		width: 128px;
+		height: 18px;
+		border-radius: 50px;
+		padding:12px 13.2px 10px;
+		margin: 14px 21px 12px;
+		color: rgba(30, 136, 229, 1);
+		border: 1px solid;
+		font-family: 'AvenirNextDemiBold', sans-serif;
+		.icon {
+			background: url('../img/phone-icon.svg') no-repeat;
+			width: 16.6px;
+			height: 16.6px;
+			display: block;
+			float: left;
+			margin-top: 1px;
+    		margin-right: 3px;
+		}
+		.uload-number {
+			color: #1E88E5;
+			font-size: 13px;
+		}
+		a {
+			display: none;
+		}
+	}
+}
+.step-button{
+	width: 277px;
+	height: 47px;
+	letter-spacing: 2px;
+	color: #fff;
+	position: relative;
+	margin: 25px auto 112px;
+	img {
+		position: absolute;
+		width: 100%;
+		height: auto;
+		left: 0;
+		top: -5px;
+		z-index: 1;
+	}
+	.inner {
+		cursor: pointer;
+		font-family: 'AvenirBlack', sans-serif;
+		width: 100%;
+		height: 74%;
+		border-radius: 6px;
+		padding-top: 6%;
+		text-align: center;
+		background:#00C853;
+		z-index: 2;
+		position: absolute;
+		&:hover {
+			background: #24DA70;
+		}
+	}
+	&.disabled{
+		opacity: 0.5;
+		.inner{
+			cursor: no-drop;
+			&:hover{
+				background:#00C853;
+			}
+		}
+	}
+}
+.error-message{
+	font-size: 17px;
+    color: #B20707;
+    font-family: 'AvenirBook', sans-serif;
+    margin-bottom: 4px;
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    display: none;
+    text-align: center;
+}
+.error-msg-holder{
+	position: absolute;
+    top: 0%;
+    left: 106%;
+    min-width: 300px;
+    display: none;
+    z-index: 999;
+}
+.error-msg{
+	font-size: 17px;
+    color: #B20707;
+    margin-top: 3px;
+    position: relative;
+    min-width: 300px;
+    padding:10px 5px 10px 31px;
+    text-align: left;
+    font-family: 'AvenirBook', sans-serif;
+    background:url(../img/i-icon.svg) no-repeat #fff;
+    background-size: 16px;
+    background-position: 3% 50%;
+    border:1px solid rgba(151, 151, 151, 0.27);
+    box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.27);
+}
+.error-msg:after, .error-msg:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.error-msg:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: #ffffff;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.error-msg:before {
+	border-right-color: rgba(151, 151, 151, 0.27);
+	border-width: 12px;
+	margin-top: -12px;
+}
+#wrapper{
+	width: 100%;
+	background:#f3f3f3;
+}
+#main {
+	padding: 35px 0 104px;
+	width: 82.8125%;
+	max-width: 941px;
+	margin: 0 auto;
+	#step-progress {
+		width:616px;
+		margin: 0px auto 35px;
+		.step {
+			float: left;
+			&.middle {
+				margin:0 30px;
+			}
+			.circle {
+				width: 9px;
+				height: 12px;
+				padding: 10px 11.5px;
+				font-size: 15px;
+				border-radius: 18px;
+				float: left;
+				font-family: 'AvenirNextBold', sans-serif;
+			}
+			.step-text {
+				font-size: 1.11765em;
+				float: left;
+				margin-left:15px;
+				color:#000;
+				opacity: 0.34;
+			    margin-top: 8px;
+			}
+			&.current {
+				.circle {
+					background: #4FA0E8;
+					color: #fff;
+				}
+				.step-text {
+					opacity: 1;
+					border-bottom: 1px solid #1E88E5;
+					font-family: 'AvenirMedium', sans-serif;
+				}
+			}
+			&.completed{
+				.circle {
+					background:rgba(0, 0, 0, 0.34);
+					color:#fff;
+					opacity: 0.4;
+				}
+			}
+			&.incomplete{
+				.circle {
+					border:1px solid rgba(0, 0, 0, 0.34);
+					color: rgba(0, 0, 0, 0.34);
+				}
+			}
+		}
+	}
+	.content{
+		width: 100%;
+		clear: left;
+		margin: 0 auto;
+		position: relative;
+		.shadow {
+			position: absolute;
+			bottom:-8%;
+			width: 100%;
+			z-index: 1;
+		}
+		.shadow-wrapper{
+			width: 100%;
+			border-radius: 21px;
+			background: #fff;
+			position: relative;
+			z-index: 2;
+			.step-box {
+				padding:1px;
+				&.on {
+					display: block;
+				}
+				&.off {
+					display: none;
+				}
+				.instructions {
+					text-align: center;
+					font-size: 1.11765em;
+				}
+				
+				&#step-box-1{
+					.instructions {
+						font-style: italic;
+						margin-top:96px;
+					}
+					#move-date {
+						width:239px;
+						height: 42px;
+						
+						margin: 29px auto;
+						text-align: center;
+						position: relative;
+						#datepicker{
+							width: 100%;
+							border: 0;
+						    height: 100%;
+						    font-size: 1.11765em;
+						    outline:1px solid #000;
+						    text-align: center;
+						    font-family: 'AvenirBook';
+						    background:url(../img/calendar-icon.svg) no-repeat;
+						    background-size: 20px;
+					        background-position: 95% 50%;
+						}
+					}
+				}
+				&#step-box-2{
+					.instructions{
+						margin-top: 64px;
+						span {
+							font-family: 'AvenirMedium', sans-serif;
+						}
+					}
+					#move-from{
+					    width: 80.2%;
+						margin: 36px auto 0;
+						position: relative;
+						input{
+							background: #f1f1f1;
+							outline:1px solid #e8e8e8;
+							font-size: 1.11765em;
+							text-align: center;
+							height: 42px;
+							width: 100%;
+							border: none;
+							padding: 0;
+							text-transform: inherit;
+							&:focus,&:selected {
+								outline: #4FA0E8;
+							}
+						}
+						::-webkit-input-placeholder {
+						   font-family: 'AvenirBook', sans-serif;
+						   text-transform: none;
+						}
+
+						:-moz-placeholder { /* Firefox 18- */
+						   font-family: 'AvenirBook', sans-serif;
+						   text-transform: none;
+						}
+
+						::-moz-placeholder {  /* Firefox 19+ */
+						   font-family: 'AvenirBook', sans-serif;
+						   text-transform: none;
+						}
+
+						:-ms-input-placeholder {  
+						   font-family: 'AvenirBook', sans-serif;
+						   text-transform: none;
+						}
+						.address-holder {
+						    width: 70.65%;
+							margin-bottom: 2.523240371846%;
+							margin-right: 2.523240371846%;
+							position: relative;
+							float: left;
+						}
+						.apt-holder {
+							width: 25.099601593625%;
+							position: relative;
+							float: left;
+						}
+						.city-holder{
+							width: 48.472775564409%;
+							position: relative;
+							float: left;
+						}
+						.state-holder{
+							width: 19.654714475432%;
+							margin: 0 2.523240371846%;
+							position: relative;
+							float: left;
+							text-transform: uppercase;
+						}
+						.zip-holder{
+							width: 25.099601593625%;
+							position: relative;
+							float: left;
+						}
+					}
+					.step-button{
+						margin-bottom: 60px;
+					}
+				}
+				&#step-box-3{
+					font-size: 1.11765em;
+					.wrapper {
+						width: 86%;
+						padding: 30px 7% 51px 7%;
+					}
+					.instructions{
+						font-family: 'AvenirLight',sans-serif;
+						font-size: 35px;
+						letter-spacing: 0.3px;
+						margin: 0;
+					    text-align: left;
+					    position: relative;
+					    font-style: normal;
+						#reference-text{
+							color: rgb(0,0,0,0.4);
+							opacity: 0.26;
+							font-size: 19px;
+							position: absolute;
+							top: 6px;
+							right: 0px;
+						}
+					}
+					.form {
+						margin-bottom: 13px;
+						span {
+						}
+						&.top-column{
+							text-align: center;
+						}
+					}
+					.nonform {
+						margin-bottom: 17px;
+						font-style: italic;
+						span {
+							font-style: normal;
+						}
+					}
+					#verify-form{
+						margin-top: 37.5px;
+					    font-style: italic;
+						#hidden{
+							visibility: hidden;
+							position: absolute;
+						    letter-spacing: 0.2px;
+						    font-size: inherit;
+						    border-bottom: 1px dashed;
+						    padding: 2px 4px;
+						    font-family: 'AvenirMedium';
+						}
+						.separator{
+							color: rgba(84, 84, 84, 0.43);
+							font-size: 1.11765em;
+							opacity: 0.43;
+						}
+
+						input {
+							background: none;
+							border: 0;
+							padding: 0;
+							color: rgba(30, 136, 229, 1);
+							letter-spacing: 0.2px;
+							font-size: inherit;
+							border-bottom:1px dashed;
+							font-family: 'AvenirMedium';
+							min-width: 50px;
+							text-align: center;
+							&:focus{
+								background: rgba(79, 160, 232, 0.2);
+								border: none;
+								outline:none;
+							}
+						}
+						.form{
+							.label{
+							    float: left;
+							    width: 20%;
+							    text-align: left;
+							    padding-top: 1%;
+							}
+							.input{
+							    float: left;
+							    text-align: left;
+							    width: 80%;
+							}
+						}
+						.name{
+							width: 34%;
+							min-width: 88px;
+						}
+						.phone{
+							width: 22%;
+							min-width: 146px;
+						}
+						.email {
+							width:34%;
+							min-width: 125px;
+						}
+						.from-address{
+							width: 398px;
+						}
+						.move-address{
+							width: 118px;
+							margin-left: 6.2px;
+						}
+						.drop-off-date {
+							width: 129px;
+							min-width: 124px;
+						}
+						.trailer{
+							width: 20px;
+							min-width: 15px;
+						}
+						#trailer-span{
+							color: rgba(0, 0, 0, 0.4);
+						}
+					}
+					.divider{
+						width: 113.23422459893%;
+						margin-left: -6.62008501594%;
+						margin-top:33.5px;
+						height: 1px;
+						background: #979797;
+						opacity: 0.15;
+					}
+					#total{
+						margin-top: 40px;
+						#sub-heading{
+							font-size: 15px;
+							opacity: 0.29;
+							letter-spacing: 1.6px;
+							font-family: 'AvenirBlack';
+						    margin-bottom: 4px;
+						}
+						#cost{
+							font-size: 40px;
+							font-family: 'AvenirHeavy', sans-serif;
+						}
+						#disclaimer{
+							font-size: 16px;
+							color:rgba(0, 0, 0, 0.4);
+							opacity: 0.57;
+							font-style: italic;
+							margin-top: 8px;
+						}
+					}
+					.step-button{
+						margin: 20px 0 0;
+					}
+				}
+				&#step-box-4{
+					.instructions{
+						font-family: 'AvenirLight',sans-serif;
+						font-size: 35px;
+						letter-spacing: 0.3px;
+						margin:36px 0 0 55px;
+					    text-align: left;
+					    position: relative;
+					    font-style: normal;
+						#reference-text{
+							color: rgb(0,0,0,0.4);
+							opacity: 0.26;
+							font-size: 19px;
+							position: absolute;
+							top: 7px;
+							right: 66px;
+						}
+					}
+					.divider{
+						width: 100%;
+						margin-left: 0px;
+						margin-top:30px;
+						height: 1px;
+						background: #979797;
+						opacity: 0.15;
+					}
+					.title{
+						font-family: 'AvenirHeavy',sans-serif;
+						letter-spacing: 3px;
+						text-align: center;
+						margin-top: 35px;
+					}
+					#cc-form{
+						.form-wrapper{
+							width: 442px;
+							margin: 36px auto 0;
+						}
+						input[type='text']{
+							background: #f1f1f1;
+							outline:1px solid #e8e8e8;
+							border: none;
+							font-size: 1.11765em;
+							text-align: center;
+							height: 42px;
+							width: 207px;
+							padding: 0;
+							&:focus,&:selected {
+								outline: #4FA0E8;
+							}
+						}
+						::-webkit-input-placeholder {
+						   font-family: 'AvenirBook', sans-serif;
+						}
+						:-moz-placeholder { /* Firefox 18- */
+						   font-family: 'AvenirBook', sans-serif 
+						}
+						::-moz-placeholder {  /* Firefox 19+ */
+						   font-family: 'AvenirBook', sans-serif
+						}
+						:-ms-input-placeholder {  
+						   font-family: 'AvenirBook', sans-serif  
+						}
+						#fname, #exp{
+							margin-right: 19px;
+						}
+						#credit-card{
+							width: 439px;
+							margin: 18px 0;
+						}
+						.credit-cards {
+							width: 247px;
+							height: 31px;
+							margin: 18px auto 0;
+							.card {
+								width: 51px;
+								float: left;
+								height: 100%;
+								opacity: 0.5;
+								&.active{
+									opacity: 1;
+								}
+							}
+							.visa{
+								background:url(../img/cc-sprite.svg) no-repeat;
+								background-position: 0 0%;
+								margin-right: 14px;
+							}
+							.mc{
+								background:url(../img/cc-sprite.svg) no-repeat;
+								background-position: 0 33.3%;
+								margin-right: 14px;
+							}
+							.amex{
+								background:url(../img/cc-sprite.svg) no-repeat;
+								background-position: 0 66.6%;
+								margin-right: 14px;
+							}
+							.disc{
+								background:url(../img/cc-sprite.svg) no-repeat;
+								background-position: 0 99.4%;
+							}
+						}
+						#billing-address{
+							font-family: 'AvenirOblique' ,sans-serif;
+							font-size: 16px;
+							color: #4E4E4E;
+							margin-top: 38px;
+						}
+						#new-address{
+							display: none;
+							#new-address-title{
+								margin: 50px 0 36px;
+							}
+							input{
+								&.address{
+									width: 280px;
+									margin-right: 18px;
+								}
+								&.apt{width:134px;}
+								&.city{width:184px;margin-top:18px;}
+								&.state{width:107px;margin:0 14px;}
+								&.zip{width: 107px;}
+							}
+						}
+						.divider.two{
+							margin-top: 65px;
+						}
+						#final {
+							margin-top: 63px;
+							width: 95.846645367412%;
+							#terms-box{
+								float: left;
+								margin-left: 18.888888888889%;
+								margin-right: 6.333333333333%;
+								font-family: 'AvenirBook',sans-serif;
+								font-size: 16px;
+								color: #444;
+								width: 303px;
+								.squaredTwo {
+								    width: 20px;
+								    height: 20px;
+								    position: relative;
+								    float: left;
+									label {
+										width: 16px;
+									    height: 16px;
+									    cursor: pointer;
+									    position: absolute;
+									    left: 0;
+									    top: 0;
+										border:2px solid #444;
+										&:after {
+										  content: '';
+										  width: 11px;
+										  height: 5px;
+										  position: absolute;
+										  top: 2px;
+										  left: 1px;
+										  border: 3px solid #4FA0E8;
+										  border-top: none;
+										  border-right: none;
+										  background: transparent;
+										  opacity: 0;
+										  transform: rotate(-45deg);
+										}
+										&:hover::after {
+										  opacity: 0.3;
+										}
+									}
+									input[type='checkbox'] {
+										visibility: hidden;
+										&:checked + label:after {
+										  opacity: 1;
+										}    
+									}
+								}
+								span{
+									float: left;
+									margin-left: 21px;
+									width: 259px;
+								}
+								a {
+									color:#4FA0E8;
+									font-weight: bold;
+									text-decoration: none;
+								}
+							}
+							#deposit{
+								float: left;
+								width: 277px;
+								text-align: center;
+								position: relative;
+								#deposit-due{
+									font-family: 'AvenirBlack', sans-serif;
+									font-size: 15px;
+									letter-spacing: 1.6px;
+									color:#B5B5B5;
+									margin-top: -6px;
+									position: relative;
+									cursor: pointer;
+									.icon{
+										background: url(../img/info-icon.svg) no-repeat;
+										position: absolute;
+										right: 27px;
+										top: 0;
+										width: 14px;
+										height: 14px;
+									}
+								}
+								#deposit-total{
+									font-family: 'AvenirHeavy', sans-serif;
+									font-size: 40px;
+									margin-top: 17px;
+								}
+							}
+						}
+					}
+				}
+				&#step-box-5{
+					padding-bottom: 35px;
+					.instructions{
+						font-family: 'AvenirLight', sans-serif;
+						font-size: 35px;
+						letter-spacing: 0.3px;
+						margin-top: 36px;
+					}
+					.print-btn{
+						position: absolute;
+						top: 24px;
+    					right: 24px;
+    					cursor: pointer;
+						width: 25px;
+						height: 23px;
+						background:url(../img/printer-icon.svg) no-repeat;
+					}
+					.message{
+						width: 553px;
+						font-family: 'AvenirBook', sans-serif;
+						text-align: center;
+						font-size: 1.11765em;
+						margin:8px auto 0;
+						line-height: 1.2em;
+					}
+					.divider{
+						width: 100%;
+						margin-top:39px;
+						height: 1px;
+						background: #979797;
+						opacity: 0.15;
+					}
+					.title{
+						margin-top: 39px;
+						color:#bbb;
+						font-family: 'AvenirMedium';
+					}
+					.bottom{
+						margin-top: 52px;
+						.order-details{
+							float: left;
+							margin-left: 60px;
+							width: 550px;
+							#grey-box{
+								background: #f2f3f6;
+								padding: 37px 37px 26px;
+								.title{
+									font-family: 'AvenirHeavy', sans-serif;
+									font-size: 17px;
+									letter-spacing: 3px;
+									margin-bottom: 29px;
+									margin-top: 0;
+									color:#000;
+									text-transform: uppercase;
+								}
+								.info-box{
+									width: 45.3%;
+									padding-right: 4.7%;
+									float: left;
+									.heading{
+										font-family: 'AvenirMedium', sans-serif;
+										color: #bbb;
+										margin-bottom: 9px;
+									}
+									& > div{
+										font-family: 'AvenirMedium', sans-serif;
+										font-size: 1.11765em;
+									}
+									.streetaddress{
+										line-height: 1.2em;
+									}
+									.cc-card{
+										margin-top: 6px;
+										padding-left: 55px;
+										padding-top: 10px;
+										height: 20px;
+										font-size: 16px;
+										background: none;
+										background-size: 50px;
+										&.visa{
+											background:url(../img/cc-sprite.svg) no-repeat;
+											background-position: 0 0%;
+										}
+										&.mc{
+											background:url(../img/cc-sprite.svg) no-repeat;
+											background-position: 0 33.3%;
+										}
+										&.amex{
+											background:url(../img/cc-sprite.svg) no-repeat;
+											background-position: 0 66.6%;
+										}
+										&.disc{
+											background:url(../img/cc-sprite.svg) no-repeat;
+											background-position: 0 99.4%;
+										}
+									}
+									&#charged-details{
+										.heading{
+											position: relative;
+											.icon{
+												width: 14px;
+												height: 14px;
+												margin-left: 3px;
+											}
+											.popup{
+												display: none;
+												position: absolute;
+											    top: -24px;
+											    left: 148px;
+											    background: url(../img/pop-up.svg) no-repeat;
+											    background-size: 100%;
+											    padding: 27px 17px 33px 45px;
+											    width: 177px;
+											    color: #000;
+											    font-family: 'AvenirLight';
+											}
+										}
+										.deposit{
+											font-family: 'AvenirHeavy', sans-serif;
+											font-weight: bold;
+											font-size: 30px;
+										}
+										
+									}
+									.billing-address{
+										line-height: 1.2em;
+									}
+								}
+								.divider{
+									background: #000;
+									opacity: 0.12;
+									margin:34px 0;
+									width: 100%;
+								    float: left;
+								    clear: both;
+								}
+							}
+							.estimate-balance{
+								font-style: italic;
+								font-size: 17px;
+								letter-spacing: 0.2px;
+								color: #bbb;
+								margin-top: 24px;
+							}
+						}
+						.service-details{
+							width: 187px;
+							margin-left: 48px;
+							float: left;
+							font-family: 'AvenirMedium';
+							h2{
+								font-family: 'AvenirHeavy', sans-serif;
+								font-weight: bold;
+								letter-spacing: 3px;
+								padding-bottom: 11px;
+								border-bottom: 1px solid;
+							}
+							#trailer-space{
+								.trailer{
+									font-size: 1.11765em;
+									margin-top: 9px;
+								}
+								#trailer-length{
+									background: url(../img/trailer-bg.png) no-repeat;
+									padding:15px 8px 28px 5px;
+									background-size: 100%;
+									margin-top: 6px;
+									#feet-container{
+										width: 100%;
+										height:33.2px;
+										.foot{
+											width: 4.7px;
+											margin-left: 1px;
+											background: #1E88E5;
+											height: 100%;
+											float: left;
+										}
+									}
+								}
+							}
+							.drop-off{
+								margin-top: 22px;
+								font-size: 1.11765em;
+								.title{
+									margin:0;
+								}
+								.drop-off-address{
+									font-size: 1.11765em;
+									margin-top: 9px;
+									margin-bottom: 22px;
+								    width: 216px;
+								}
+								.drop-off-date{
+									margin-top: 14px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+	background: #15499D;
+	z-index: 1000;
+	opacity: 0.9;
+	display: none;
+	overflow: hidden;
+}
+.disable-scroll{
+	overflow: hidden;
+}
+.modal{
+	position: fixed;
+	width: 608px;
+	overflow: hidden;
+	z-index: 1001;
+	background: #fff;
+	border-radius: 14px;
+	display: none;
+	.modal-title{
+		font-family: 'AvenirLight', sans-serif;
+		font-size: 35px;
+		letter-spacing: 0.3px;
+	}
+	#close-btn{
+		position: absolute;
+		top: 34px;
+		right: 34px;
+		cursor: pointer;
+		width: 34px;
+   		height: 34px;
+		.pylon{
+			position: absolute;
+			width: 2px;
+			height: 100%;
+			background: #444;
+			left: 15px;
+			top: 0;
+			&.one{
+				transform:rotate(45deg);
+			}
+			&.two{
+				transform:rotate(-45deg);
+			}
+		}
+	}
+	.modal-content{
+		font-family: 'AvenirBook',sans-serif;
+		font-size: 14px;
+		color: #444;
+		overflow: auto;
+	}
+	&#info {
+		height: 557px;
+		.modal-title{
+			margin:36px 0 0 39px;
+			position: absolute;
+		}
+		.modal-content{
+			width:506px;
+		    padding-right: 53px;
+			margin-left: 39px;
+			margin-top: 86px;
+			line-height: 1.2em;
+		    height: 456px;
+		    > div{
+		    	padding-bottom: 30px;
+		    	p{
+					margin:10px 0;
+				}
+				.bold {
+					font-family: 'AvenirHeavy';
+				}
+				.indent {
+					margin-left: 40px;
+				}
+				ul {
+				    list-style-type: disc;
+					padding-left: 40px;
+				}
+		    }
+			
+		}
+	}
+}
+footer{
+	overflow: hidden;
+	position: relative;
+	.content {
+		width: 82.8125%;
+		max-width: 941px;
+		margin: 64px auto;
+		color:#fff;
+		font-size: 18px;
+		font-family: "AvenirNextRegular", sans-serif;
+		#footer-top {
+			height: 58px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+			#footer-logo {
+				background: url(../img/uload-logo-footer.svg) no-repeat;
+				width:111px;
+				height: 38px;
+				float: left;
+			}
+			.footer-icons{
+				width: 27px;
+				height: 27px;
+				cursor: pointer;
+				float: right;
+			}
+			#fb-link {
+				background: url(../img/fb-icon.svg) no-repeat;
+				
+			}
+			#twt-link {
+				background: url(../img/twitter-icon.svg) no-repeat;
+				margin-right: 30px;
+				margin-left: 15px;
+			}
+			#footer-menu {
+				float: right;
+				width:441px;
+				ul {
+					margin-top: 4px;
+					float: left;
+					li {
+						float: left;
+						&.menu {
+							margin-top:4px;
+						}
+						.divider {
+							opacity: 0.4;
+							margin:0 15px;
+							height: 18px;
+							width: 1px;
+							background: #fff;
+							display: block;
+    						float: left;
+						}
+						a {
+							color: #fff;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+		#footer-bottom {
+			padding-top: 31px;
+			#copyright {
+				opacity: 0.4;
+				float: left;
+			}
+			.uload-number {
+				font-family: 'AvenirNextRegular';
+			    font-weight: 700;
+				float: right;
+			}
+		}
+	}
+}
+@media screen and (max-width:768px){
+	#main {
+		.content {
+			.shadow-wrapper{
+				.step-box{
+					&#step-box-3{
+						.wrapper{
+					        width: 88.6%;
+    						padding: 30px 5.679% 51px;
+    						font-size: 1em;
+    						.instructions{
+								font-size: 28px;
+								letter-spacing: 0.2px;
+							}
+							#verify-form{
+								.name{
+									width:158px;
+								}
+								.phone{
+									width: 127px;
+									min-width: 127px;
+								}
+								.email {
+									width: 135px;
+								}
+								.from-address{
+									width: 353px;
+									min-width: 200px;
+								}
+								.drop-off-date{
+								    width: 113px;
+    								min-width: 113px;
+								}
+							}
+							#total{
+								#disclaimer{
+									font-size: 15px;
+								}
+							}
+							
+						}
+					}
+					&#step-box-4{
+						.instructions{
+							font-size: 28px;
+							letter-spacing: 0.2px;
+						}
+						#cc-form{
+							#final{
+								#terms-box{
+									margin-left: 34px;
+									font-size: 14px;
+									width: 44.078947368421%;
+									margin-right: 4.2333333%;
+									.squaredTwo{
+										width: 16px;
+										height: 16px;
+										label{
+											width: 14px;
+											height: 14px;
+										}
+									}
+									span{
+										width:86.194029850746%;
+										margin-left: 20px;
+									}
+								}
+								#deposit{
+
+									.step-button{
+										margin-bottom: 54px;
+									}
+								}
+							}
+						}
+					}
+					&#step-box-5{
+						.print-btn{
+
+						}
+						.instructions{
+							font-size: 28px;
+							letter-spacing: 0.2px;
+						}
+						.bottom{
+							width: 100%;
+							.order-details{
+								width: 86.477987421384%;
+								margin-left: 6.761006289308%;
+								float: none !important;
+							}
+							.service-details{
+								clear: both;
+								width: 86.477987421384%;
+								float: none !important;
+								margin-left: 6.761006289308%;
+								margin-top: 34px;
+								h2{
+								    display: inline;
+								    float: left;
+								}
+								#trailer-space{
+									width: 33.3%;
+									float: left;
+									clear: left;
+									#trailer-length{
+										#feet-container{
+											height: 31.2px;
+										}
+									}
+								}
+								.drop-off{
+									width: 64%;
+									float: left;
+									margin-top: 39px;
+									margin-left: 2%;
+									> div{
+										float: left;
+									}
+									#drop-off-1{
+										width: 65%;
+										line-height: 1.2em;
+									}
+									#drop-off-2{
+										width:35%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	footer{
+		.content {
+			width: 100%;
+			margin:54px auto;
+			#footer-top{
+				height: auto;
+				border: none;
+				#footer-logo, #footer-menu{
+					float: none;
+					margin: 0 auto;
+				}
+				#footer-menu{
+					margin-top: 31px;
+					width: 541px;
+				}
+			}
+		}
+		#footer-bottom{
+		    clear: both;
+		    span{
+		    	float: none !important;
+			    text-align: center;
+			    display: block;
+			    width: 100%;
+		    }
+			.uload-number{
+			    margin-top: 11px;
+			}
+		}
+	}
+}
+@media screen and (max-width:650px){
+	body{
+		font-size: 15px;
+	}
+	header{
+		#logo{
+			background-size: 100%;
+			width: 113px;
+			margin-top: 15px;
+		}
+		#call-us{
+			width: 34px;
+			height: 34px;
+			margin: 15px 15px 0 0;
+			background: url(../img/phone-button-mobile.svg) no-repeat;
+			background-size: 100%;
+			text-indent: -9999px;
+			border: none;
+			padding:0;
+			span{
+				display: none !important;
+			}
+			a{
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	#step-progress{
+		display: none;
+	}
+	#main{
+		width: 90.338164251208%;
+		padding: 50px 0;
+		.content{
+			.shadow{
+				bottom: -26px;
+			}
+			.shadow-wrapper{
+				.step-box{
+					&#step-box-1{
+						.instructions{
+							margin-top:73px;
+						}
+						.step-button{
+							margin-bottom: 81px;
+						}
+					}
+					&#step-box-2{
+						.instructions{
+							margin: 64px auto 0;
+						    width: 239px;
+						}
+						#move-from{
+							width: 90%;
+							.city-holder{
+								width: 68.65%;
+							}
+							.address-holder{
+								width: 68.65%;
+								margin-bottom: 4.52324%;
+								margin-right: 4.52324%;
+							}
+							.apt-holder{
+								width: 26.826759628154%;
+							}
+							.state-holder{
+								width: 26.826759628154%;
+							    margin: 0 0 4.523240371846% 4.523240371846%;
+							}
+							.zip-holder{
+								width: 100%;
+								input{
+									width: 45.187165775401%;
+								    margin: 0 auto;
+    								display: block;
+								}
+							}
+						}
+					}
+					&#step-box-3{
+						.wrapper{
+							width: 90%;
+							padding:30px 5% 51px;
+							.instructions{
+								font-size: 25px;
+							    letter-spacing: 0.2px;
+							    text-align: center;
+							    span#reference-text {
+							    	display: block;
+							    	position: relative;
+							    	margin: 10px 0 0 0;
+							    }
+							}
+							#verify-form{
+								.separator.second{
+									display: none;
+								}
+								.name{
+									max-width: 143px;
+								}
+								.phone{
+
+								}
+								.email {
+								    display: block;
+    								margin: 5px auto 0;
+								}
+								.from-address{
+									margin: -5px 0 0;
+									max-width: 100%;
+									min-width: 80%;
+								}
+								.form {
+									clear: both;
+									min-height: 24px;
+									position: relative;
+									&:nth-of-type(3){
+										padding-top: 17px;
+									}
+									#trailer-span {
+										display: none;
+									}
+									.label{
+										width: 110px;
+									}
+									.input{
+										width: ~'calc(96% - 110px)';
+    									margin-left: 4%;
+									}
+								}
+								.drop-off-date{
+									
+								}
+							}
+							.nonform .heavy{
+								margin-left: 20px;
+							}
+							.step-button {
+							    margin: 20px auto 0;
+							}
+						}
+					}
+					&#step-box-4{
+						.instructions{
+							font-size: 25px;
+						    letter-spacing: 0.2px;
+						    text-align: center;
+					        margin: 36px auto 0;
+						    span#reference-text {
+						    	display: block;
+						    	position: relative;
+						    	margin: 10px auto 0;
+							    left: 0;
+							    top: 0;
+						    }
+						}
+						#cc-form{
+							.form-wrapper{
+								width: 90%;
+								input[type='text'] {
+									width: 49%;
+									float: left;
+									margin: 0;
+								}
+								#fname{
+									margin-right: 2%;
+								}
+								#credit-card{
+									width: 100%;
+									float: none;
+								}
+								#exp {
+									margin-right: 2%;
+									margin-bottom: 10px;
+								}
+								.credit-cards{
+									clear: both;
+								}
+								#billing-address{
+									.text{
+										display: block;
+										text-align: center;
+										margin:0 0 4px 0;
+									}
+									#from-address-radio{
+										margin-left: 19px;
+									}
+									#new-address-radio{
+										margin-left: 7px;
+									}
+								}
+								#new-address{
+									width: 90%;
+									.city{
+										width: 68.65%;
+										margin-top: 0;
+									}
+									.address{
+										width: 68.65%;
+										margin-bottom: 4.52324%;
+										margin-right: 4.52324%;
+									}
+									.apt{
+										width: 26.826759628154%;
+									}
+									.state{
+										width: 26.826759628154%;
+									    margin: 0 0 4.523240371846% 4.523240371846%;
+									}
+									.zip{
+									    width: 50%;
+									    margin: 0 auto;
+									    float: none;
+									    display: block;
+									    clear: both;
+									}
+								}
+							}
+							#final{
+								margin: 50px auto 0;
+								#terms-box{
+									width: 85%;
+									margin-bottom: 50px;
+									.checkbox{
+										width: 10%;
+										float: left;
+										height: 19px;
+									}
+									.label{
+										width: 86%;
+										float: left;
+										span{
+											float: none;
+											width: 100%;
+											margin: 0;
+										}
+										span:after{
+											clear: both;
+										}
+									}
+								}
+								#deposit{
+									clear: left;
+									float: none;
+									margin: 0 auto;
+									.step-button{
+										margin: 14px auto 62px;
+									}
+								}
+							}
+						}
+					}
+					&#step-box-5{
+						.print-btn {
+							display: none;
+						}
+						.message{
+							width: 89%;
+						}
+						.bottom{
+							.order-details{
+								#grey-box{
+									.title{
+										text-align: center;
+									}
+									.info-box{
+										width: 100%;
+										padding:0;
+										float: none;
+										margin-bottom: 11%;
+									}
+									.divider{
+										margin: 10% 0 23%;
+									}
+
+									.info-box#charged-details{
+										.heading{
+											.popup{
+												background: url(../img/mobile-popup.svg) no-repeat;
+											    padding: 43px 36px 33px 39px;
+    											width: 150px;
+    											text-align: center;
+    											line-height: 1.3em;
+											    top: 14px;
+    											left: 14px;
+											}
+										}
+									}
+								}
+							}
+							.service-details{
+								text-align: center;
+								h2{
+									display: block;
+									float: none;
+									margin: 0 auto;
+									width: 189px;
+								}
+								#trailer-space{
+									width: 100%;
+									float: none;
+									.trailer{}
+									#trailer-length{
+										padding:8.1% 5% 12% 2.3%;
+										#feet-container{
+											height: 50px;
+										}
+									}
+								}
+								.drop-off{
+									width: 100%;
+									float: none;
+									margin-left: 0;
+								    margin-top: 25px;
+									#drop-off-1{
+										width: 100%;
+										float: none;
+										.drop-off-address{
+											width: 100%;
+										}
+									}
+									#drop-off-2{
+										width: 100%;
+										float: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.modal#info{
+		width: 90%;
+		left: 5%;
+		height: 50%;
+		.modal-title{
+			font-size: 25px;
+			margin:36px 0 0 18px;
+		}
+		#close-btn{
+			top: 12px;
+			right: 12px;
+			width: 30px;
+			height: 30px;
+		}
+		.modal-content{
+			width: 90%;
+			padding-right: 5%;
+			margin-left: 3%;
+			height: 230px;
+		}
+	}
+	footer {
+		.content{
+			font-size: 1em;
+			margin: 28px auto;
+			#footer-top{
+				.footer-icons{
+					position: absolute;
+					top: 78%;
+					left: 23%;
+				}
+				#footer-menu{
+				    text-align: center;
+				    margin-top: 19px;
+				    width: 100%;
+				    ul{
+				    	display: inline-block;
+				    	margin: 4px auto 0;
+				    	float: none;
+				    	li{
+				    		.divider{
+				    			margin: 0 7px;
+				    		}
+				    	}
+				    }
+				    
+				}
+				#twt-link{
+					margin-left: 41px;
+				}
+			}
+			#footer-bottom{
+				padding-top: 21px;
+				#copyright{
+					line-height: 1.2em;
+					width: 90%;
+					margin:0 auto;
+				}
+				.uload-number{
+					padding-left: 60px;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:320px){
+	body{
+		font-size: 14px;
+	}
+}
