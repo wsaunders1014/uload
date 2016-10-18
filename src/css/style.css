@@ -128,43 +128,53 @@ table {
 }
 @font-face {
   font-family: 'AvenirNextRegular';
-  src: url('../fonts/AvenirNextRegular.woff') format('woff'), url('../fonts/AvenirNextRegular.ttf') format('ttf');
+  src: url('../fonts/AvenirNextRegular.eot');
+  src: url('../fonts/AvenirNextRegular.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirNextRegular.woff2') format('woff2'), url('../fonts/AvenirNextRegular.woff') format('woff'), url('../fonts/AvenirNextRegular.ttf') format('ttf'), url('../fonts/AvenirNextRegular.svg#AvenirNextRegular') format('svg');
 }
 @font-face {
   font-family: 'AvenirNextDemiBold';
-  src: url('../fonts/AvenirNextDemiBold.woff') format('woff'), url('../fonts/AvenirNextDemiBold.ttf') format('ttf');
+  src: url('../fonts/AvenirNextDemiBold.eot');
+  src: url('../fonts/AvenirNextDemiBold.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirNextDemiBold.woff2') format('woff2'), url('../fonts/AvenirNextDemiBold.woff') format('woff'), url('../fonts/AvenirNextDemiBold.ttf') format('ttf'), url('../fonts/AvenirNextDemiBold.svg#AvenirNextDemiBold') format('svg');
 }
 @font-face {
   font-family: 'AvenirNextMedium';
-  src: url('../fonts/AvenirNextMedium.woff') format('woff'), url('../fonts/AvenirNextMedium.ttf') format('ttf');
+  src: url('../fonts/AvenirNextMedium.eot');
+  src: url('../fonts/AvenirNextMedium.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirNextMedium.woff2') format('woff2'), url('../fonts/AvenirNextMedium.woff') format('woff'), url('../fonts/AvenirNextMedium.ttf') format('ttf'), url('../fonts/AvenirNextMedium.svg#AvenirNextMedium') format('svg');
 }
 @font-face {
   font-family: 'AvenirNextBold';
-  src: url('../fonts/AvenirNextBold.woff') format('woff'), url('../fonts/AvenirNextBold.ttf') format('ttf');
+  src: url('../fonts/AvenirNextBold.eot');
+  src: url('../fonts/AvenirNextBold.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirNextBold.woff2') format('woff2'), url('../fonts/AvenirNextBold.woff') format('woff'), url('../fonts/AvenirNextBold.ttf') format('ttf'), url('../fonts/AvenirNextBold.svg#AvenirNextBold') format('svg');
 }
 @font-face {
   font-family: 'AvenirBlack';
-  src: url('../fonts/AvenirBlack.woff') format('woff'), url('../fonts/AvenirBlack.ttf') format('ttf');
+  src: url('../fonts/AvenirBlack.eot');
+  src: url('../fonts/AvenirBlack.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirBlack.woff2') format('woff2'), url('../fonts/AvenirBlack.woff') format('woff'), url('../fonts/AvenirBlack.ttf') format('ttf'), url('../fonts/AvenirBlack.svg#AvenirBlack') format('svg');
 }
 @font-face {
   font-family: 'AvenirOblique';
-  src: url('../fonts/AvenirOblique.woff') format('woff'), url('../fonts/AvenirOblique.ttf') format('ttf');
+  src: url('../fonts/AvenirOblique.eot');
+  src: url('../fonts/AvenirOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirOblique.woff2') format('woff2'), url('../fonts/AvenirOblique.woff') format('woff'), url('../fonts/AvenirOblique.ttf') format('ttf'), url('../fonts/AvenirOblique.svg#AvenirOblique') format('svg');
 }
 @font-face {
   font-family: 'AvenirBook';
-  src: url('../fonts/AvenirBook.woff') format('woff'), url('../fonts/AvenirBook.ttf') format('ttf');
+  src: url('../fonts/AvenirBook.eot');
+  src: url('../fonts/AvenirBook.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirBook.woff2') format('woff2'), url('../fonts/AvenirBook.woff') format('woff'), url('../fonts/AvenirBook.ttf') format('ttf'), url('../fonts/AvenirBook.svg#AvenirBook') format('svg');
 }
 @font-face {
   font-family: 'AvenirHeavy';
-  src: url('../fonts/AvenirHeavy.woff') format('woff'), url('../fonts/AvenirHeavy.ttf') format('ttf');
+  src: url('../fonts/AvenirHeavy.eot');
+  src: url('../fonts/AvenirHeavy.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirHeavy.woff2') format('woff2'), url('../fonts/AvenirHeavy.woff') format('woff'), url('../fonts/AvenirHeavy.ttf') format('ttf'), url('../fonts/AvenirHeavy.svg#AvenirHeavy') format('svg');
 }
 @font-face {
   font-family: 'AvenirMedium';
-  src: url('../fonts/AvenirMedium.woff') format('woff'), url('../fonts/AvenirMedium.ttf') format('ttf');
+  src: url('../fonts/AvenirMedium.eot');
+  src: url('../fonts/AvenirMedium.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirMedium.woff2') format('woff2'), url('../fonts/AvenirMedium.woff') format('woff'), url('../fonts/AvenirMedium.ttf') format('ttf'), url('../fonts/AvenirMedium.svg#AvenirMedium') format('svg');
 }
 @font-face {
   font-family: 'AvenirLight';
-  src: url('../fonts/AvenirLight.woff') format('woff'), url('../fonts/AvenirLight.ttf') format('ttf');
+  src: url('../fonts/AvenirLight.eot');
+  src: url('../fonts/AvenirLight.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirLight.woff2') format('woff2'), url('../fonts/AvenirLight.woff') format('woff'), url('../fonts/AvenirLight.ttf') format('ttf'), url('../fonts/AvenirLight.svg#AvenirLight') format('svg');
 }
 body {
   background: #1A4E99;
@@ -359,7 +369,7 @@ header #call-us a {
   margin: 0 auto;
 }
 #main #step-progress {
-  width: 616px;
+  width: 617px;
   margin: 0px auto 35px;
 }
 #main #step-progress .step {
@@ -1213,7 +1223,7 @@ footer .content #footer-top .footer-icons {
   width: 27px;
   height: 27px;
   cursor: pointer;
-  float: right;
+  float: left;
 }
 footer .content #footer-top #fb-link {
   background: url(../img/fb-icon.svg) no-repeat;
@@ -1225,7 +1235,8 @@ footer .content #footer-top #twt-link {
 }
 footer .content #footer-top #footer-menu {
   float: right;
-  width: 441px;
+  width: 541px;
+  margin-top: 4px;
 }
 footer .content #footer-top #footer-menu ul {
   margin-top: 4px;
@@ -1256,11 +1267,17 @@ footer .content #footer-bottom {
 footer .content #footer-bottom #copyright {
   opacity: 0.4;
   float: left;
+  width: 80%;
 }
 footer .content #footer-bottom .uload-number {
   font-family: 'AvenirNextRegular';
   font-weight: 700;
   float: right;
+  width: 20%;
+  text-align: right;
+}
+.mobile {
+  display: none;
 }
 @media screen and (max-width: 768px) {
   #main .content .shadow-wrapper .step-box#step-box-3 .wrapper {
@@ -1391,11 +1408,20 @@ footer .content #footer-bottom .uload-number {
     display: block;
     width: 100%;
   }
+  footer #footer-bottom #copyright {
+    margin: 0 auto;
+  }
   footer #footer-bottom .uload-number {
-    margin-top: 11px;
+    margin: 11px auto 0;
   }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 696px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
   body {
     font-size: 15px;
   }
@@ -1743,7 +1769,10 @@ footer .content #footer-bottom .uload-number {
     margin: 0 auto;
   }
   footer .content #footer-bottom .uload-number {
-    padding-left: 60px;
+    padding-left: 143px;
+    width: auto;
+    text-align: center;
+    margin: 11px 0;
   }
 }
 @media screen and (max-width: 320px) {

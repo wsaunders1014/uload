@@ -289,6 +289,7 @@
 	border: 1px solid rgba(68, 68, 68, 0.18);
 	box-shadow:0 2px 4px rgba(0,0,0,0.16);
 	padding:3px;
+	min-height: 203px;
 }
 .arrow-box:after, .arrow-box:before {
 	bottom: 100%;

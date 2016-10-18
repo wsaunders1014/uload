@@ -17,7 +17,7 @@
 			<div id="call-us">
 				<span class="icon"></span>
 				<span class="uload-number">(888) ULOAD-US</span>
-				<a href="tel:888-414-2016"></a>
+				<a href="tel:888-856-2387"></a>
 			</div>
 		</header>
 		<div id="wrapper">
@@ -181,7 +181,7 @@
 							<div class="instructions">Thank You!</div>
 							<div class="print-btn"></div>
 							<div class="message">
-								Your trailer has been reserved. Your reference number is <span class="reference"><strong>22518</strong></span>. If you have any questions, give us a call at <strong>(888) 414 - 2016</strong>.
+								Your trailer has been reserved. Your reference number is <span class="reference"><strong>22518</strong></span>. If you have any questions, give us a call at <strong>(888) 856 - 2387</strong>.
 							</div>
 							<div class="divider"></div>
 							<div class="bottom">
@@ -267,6 +267,9 @@
 					<div id="footer-logo"></div>
 
 					<div id="footer-menu">
+						<div id="fb-link" class="footer-icons desktop"></div>
+						<div id="twt-link" class="footer-icons desktop"></div>
+						
 						<ul>
 							<li class="menu"><a href="#" target="_blank">Privacy Policy</a></li>
 							<li class="menu"><span class="divider"></span> <a href="#" target="_blank">Terms of Use</a></li>
@@ -276,12 +279,12 @@
 						</ul>
 						<div class="clear"></div>
 					</div>
-					<div id="twt-link" class="footer-icons"></div>
-					<div id="fb-link" class="footer-icons"></div>
+					<div id="twt-link" class="footer-icons mobile"></div>
+					<div id="fb-link" class="footer-icons mobile"></div>
 				</div>
 				<div id="footer-bottom">
 					<span id="copyright">&copy;2016 ULoad&trade;. All rights reserved. 631 N. Stephanie St., Ste 330 Henderson, NV 89014</span>
-					<span class="uload-number"><a href="tel:888-414-2016">888-414-2016</a></span>
+					<span class="uload-number"><a href="tel:888-856-2387">888-856-2387</a></span>
 				</div>
 			</div>
 		</footer>

@@ -23,12 +23,13 @@ gulp.task('minify-css', function() {
 //concat
 
 
-//gzip
-// gulp.task('compress', function() {
-//     gulp.src('src/scripts/*.js')
-//     .pipe(gzip())
-//     .pipe(gulp.dest('build/js'));
-// });
+gzip
+gulp.task('gzipAll', function() {
+    gulp.src('src/**/*.*')
+    .pipe(gzip())
+    .pipe(gulp.dest('build/'));
+});
+
 //html min
 
 //image min

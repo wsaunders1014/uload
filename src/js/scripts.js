@@ -54,6 +54,7 @@ $(document).ready(function(){
 			$('.incomplete').addClass('current').removeClass('incomplete');
 		}else if($this.hasClass('step-4')) {
 			$this.parents('.step-box').hide().next().show();
+			$('.current').addClass('completed').removeClass('current');
 		}else {
 			$this.parents('.step-box').hide().next().show();
 		}
@@ -98,7 +99,7 @@ $(document).ready(function(){
 	});
 	$('#deposit-due').on(eventType, function(){
 	});
-	
+
 	$('#charged-details .heading img').hover(function(){
 		$('.popup').show();
 	},function(){

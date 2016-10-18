@@ -1,8 +1,12 @@
 @import "includes/reset.less";
 .font(@name){
 	font-family:@name;
-	src:url('../fonts/@{name}.woff') format('woff'),
-		url('../fonts/@{name}.ttf') format('ttf');
+	src:url('../fonts/@{name}.eot');
+	src:url('../fonts/@{name}.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/@{name}.woff2') format('woff2'),
+		url('../fonts/@{name}.woff') format('woff'),
+		url('../fonts/@{name}.ttf') format('ttf'),
+		url('../fonts/@{name}.svg#@{name}') format('svg');
 		
 }
 @font-face{
@@ -226,7 +230,7 @@ header{
 	max-width: 941px;
 	margin: 0 auto;
 	#step-progress {
-		width:616px;
+		width:617px;
 		margin: 0px auto 35px;
 		.step {
 			float: left;
@@ -1093,7 +1097,7 @@ footer{
 				width: 27px;
 				height: 27px;
 				cursor: pointer;
-				float: right;
+				float: left;
 			}
 			#fb-link {
 				background: url(../img/fb-icon.svg) no-repeat;
@@ -1106,7 +1110,8 @@ footer{
 			}
 			#footer-menu {
 				float: right;
-				width:441px;
+				width:541px;
+				margin-top: 4px;
 				ul {
 					margin-top: 4px;
 					float: left;
@@ -1137,16 +1142,23 @@ footer{
 			#copyright {
 				opacity: 0.4;
 				float: left;
+				width: 80%;
 			}
 			.uload-number {
 				font-family: 'AvenirNextRegular';
 			    font-weight: 700;
 				float: right;
+				width: 20%;
+				text-align: right;
 			}
 		}
 	}
 }
+.mobile {
+	display:none;
+}
 @media screen and (max-width:768px){
+
 	#main {
 		.content {
 			.shadow-wrapper{
@@ -1305,13 +1317,22 @@ footer{
 			    display: block;
 			    width: 100%;
 		    }
+		    #copyright {
+		    	    margin: 0 auto;
+		    }
 			.uload-number{
-			    margin-top: 11px;
+			    margin: 11px auto 0;
 			}
 		}
 	}
 }
-@media screen and (max-width:650px){
+@media screen and (max-width:696px){
+	.desktop {
+		display: none;
+	}
+	.mobile {
+		display: block;
+	}
 	body{
 		font-size: 15px;
 	}
@@ -1705,7 +1726,10 @@ footer{
 					margin:0 auto;
 				}
 				.uload-number{
-					padding-left: 60px;
+					padding-left: 143px;
+					width: auto;
+					text-align: center;
+					margin: 11px 0;
 				}
 			}
 		}

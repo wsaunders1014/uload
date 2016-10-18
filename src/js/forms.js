@@ -15,8 +15,10 @@ $('.letters-only').on('focus', function(){
 $('.numbers-only').on('focus', function(){
 	$(this).on('keydown', function(e){
 		if(e.which < 48 || e.which > 57){
-			if(e.which != 8 && e.which != 46 && e.which !=110 && e.which !=9)//keep delete keys!
-				e.preventDefault();
+			if(e.which < 96 || e.which >105){
+				if(e.which != 8 && e.which != 46 && e.which !=110 && e.which !=9)//keep delete keys!
+					e.preventDefault();
+			}
 		}
 	});
 }).on('focusout', function(){
