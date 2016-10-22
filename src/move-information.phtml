@@ -1,0 +1,278 @@
+<?php
+//$this->headScript()->appendFile('js/owl.carousel.js');
+$this->headLink()//->prependStylesheet($this->basePath('/beta/css/jquery-ui.css'))
+        ->prependStylesheet($this->basePath('/css/move-info/style.all.css'));
+$this->headScript()
+       ->prependFile('/js/move-info/scripts.all.js')
+        // ->prependFile('/js/mask.js')
+        // ->prependFile('/js/additional-methods.min.js')
+        // ->prependFile('/js/jquery.validate.min.js')
+        ->prependFile('/js/jquery.min.js');
+         
+$this->headTitle('Reserve Your ULoad Moving Trailer Space');
+$this->headMeta()->appendName('description', 'Select your desired trailer space and enter your move details to reserve your ULoad moving trailer today!');
+//echo $this->partial('/layout/header.phtml'); 
+?>
+
+<div id="wrapper">
+    <div id="main">
+        <div id="step-progress">
+            <div class="step completed">
+                <div class="circle">1</div>
+                <div class="step-text">Move Requirements</div>
+            </div>
+            <div class="step current middle">
+                <div class="circle">2</div>
+                <div class="step-text">Move Information</div>
+            </div>
+            <div class="step incomplete">
+                <div class="circle">3</div>
+                <div class="step-text">Checkout</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="content">
+            <div class="shadow-wrapper">
+                <div class="step-box on" id="step-box-1">
+                    <form id="form_step1" name="form_step1" method="post"  action="#">
+                        <div class="instructions">Approximate Move Date</div>
+                        <div id="move-date">
+                            <div class="error-message">Please select a date first.</div>
+                            <input id="datepicker" class="date-format" type="text" name="move_date" value="<?php echo isset($leadData->move_date) ? date('m/d/Y', strtotime($leadData->move_date)) : ''; ?>" placeholder="Moving Date" required maxlength="10" readonly>
+                        </div>
+                        <div class="step-button step-1">
+                            <div class="inner" id="btn_move_date">CONTINUE</div>
+                            <!--<input type="submit" id="btn_step1" class="inner" value="CONTINUE" name="btn_step1" />-->
+                        </div>
+                    </form>
+                </div>
+                <div class="step-box off" id="step-box-2">
+                    <div class="instructions">Check Service Availability in <span><?php echo isset($leadData->from_city) ? ucwords($leadData->from_city) : '' ?>, <?php echo isset($leadData->from_state) ? $leadData->from_state : '' ?></span></div>
+                    <form id="move-from" name="move-form" method="post" action="#">
+                        <div class="error-message">All Fields Required.</div>
+                        <div class="address-holder">
+                            <input type="text" name="from_address" class="address" id="from_address" placeholder="Address" value="<?php echo ucwords($leadData->from_address) ?>" required>
+                        </div>
+                        <div class="apt-holder">
+                            <input type="text" name="from_building_type" class="apt" id="from_building_type" placeholder="Apt/Suite" maxlength="10" value="<?php echo ucwords($leadData->from_building_type) ?>">	
+                        </div>
+                        <div class="city-holder">
+                            <input type="text" name="from_city" class="city letters-only" id="from_city" placeholder="City" required maxlength="30" value='<?php echo isset($leadData->from_city) ? ucwords($leadData->from_city) : '' ?>'>	
+                        </div>
+                        <div class="state-holder">
+                            <input type="text" name="from_state" class="state letters-only" id="from_state" class="letters-only" placeholder="State" maxlength="2"  value="<?php echo isset($leadData->from_state) ? $leadData->from_state : '' ?>" required>
+                        </div>
+                        <div class="zip-holder">
+                            <input type="text" name="from_zip" class="zip numbers-only" id="from_zip" class="numbers-only" placeholder="Zip" maxlength='5' required value="<?php echo isset($leadData->from_zip) ? $leadData->from_zip : '' ?>" >
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="step-button step-2 clear disabled">
+                            <div class="inner">NEXT</div>
+                            <!--<input type="submit" name="btn_step2" id="btn_step2"  class="inner" value="NEXT" />-->
+                        </div>
+                    </form>
+                </div>
+                <div class="step-box off" id="step-box-3">
+                    <div class="wrapper">
+                        <div class="instructions">Verify your move info: <span id="reference-text">Reference #: <span class="reference"><?php echo $leadData->lead_id; ?></span></span></div>
+                        <form id="verify-form">
+                            <div class="form">
+                                <input type="text" class="name" name="full_name" id="full_name" placeholder='Full Name' value="<?php echo isset($leadData->name) ? $leadData->name : '' ?>"> <span class="separator">/</span>
+                                <input type="tel" class="phone numbers-only" maxlength="16" placeholder='Phone Number' name="phone" id="phone" value="<?php echo isset($leadData->phone) ? $leadData->phone : '' ?>" > <span class="separator second">/</span>
+                                <input type="email" class="email" placeholder="Email Address" name="email" id="email" value="<?php echo isset($leadData->email) ? $leadData->email : '' ?>" required>
+                            </div>
+                            <div class="form">
+
+                                Moving From: <input type="text" class="from-address" name="from_address2" id="from_address2" value="" placeholder="Address" required>
+                                <img src="beta/img/arrow-icon.svg" alt="arrow-icon" />
+                                <input type="text" class="to-address" name="move_address" id="move_address" value="<?php echo ucwords($leadData->to_city) . ', ' . $leadData->to_state; ?>" required>
+                                <input type="hidden" name="to_city" id="to_city" value="<?php echo ucwords($leadData->to_city) ?>" >
+                                <input type="hidden"  name="to_zip" id="to_zip" value="<?php echo $leadData->to_zip; ?>" >
+                                <input type="hidden"  name="to_state" id="to_state" value="<?php echo $leadData->to_state; ?>" >
+                            </div>
+                            <div class="form">
+                                Approx. Drop-off Date: <input type="text" maxlength="14" class="drop-off-date date-format" name="move_date2" id="move_date2"value="<?php echo isset($leadData->move_date) ? date('m/d/Y', strtotime($leadData->move_date)) : ''; ?>" readonly required>
+                            </div>
+                            <div class="form">
+                                Trailer Space: <input type="text" class="trailer numbers-only" maxlength="2" name="trailer_feet" id="trailer_feet" value="<?php echo $existLeadId->trailer_feet; ?>" required>' of Trailer Length <span id="trailer-span">- Only pay for the space you use!</span>
+                            </div>
+
+                            <div class="nonform">
+                                Adjusted rate per foot: <span class="book">+/- $<span id="rate-per-foot"><?php echo isset($existLeadId->plf_price) && !empty($existLeadId->plf_price) ? $existLeadId->plf_price : 0.00; ?></span>/ft</span>
+                            </div>
+                            <div class="nonform">
+                                Approx. Transit Time: <span id="transit-time" class="book">4 to 6 <span id="biz">BUSINESS</span> DAYS</span>
+                            </div>
+                            <div class="nonform">
+                                Driver, Taxes, & Fuel: <span class="heavy"><b>INCLUDED</b></span>
+                            </div>
+                            <div class="nonform">
+                                Door-to-Door Delivery: <span class="heavy"><b>INCLUDED</b></span>
+                            </div>
+                            <div class="divider"></div>
+                            <div id="total">
+                                <div id="sub-heading">TOTAL ESTIMATE</div>
+                                <div id="cost">$<?php echo number_format($existLeadId->total_price, 2); ?></div>
+                                <div id="disclaimer">Price based on information provided and may be widthdrawn if not reserved.</div>
+                                <div class="step-button step-3">
+                                    <div class="inner">VERIFY</div>
+                                    <!--<button type="submit" name="verify" id="verify" class="inner" >VERIFY</button>-->
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-box off" id="step-box-4">
+                    <div class="instructions">Checkout <span id="reference-text">Reference #: <span class="reference"><?php echo $leadData->lead_id; ?></span></span></div>
+                    <div class="divider"></div>
+                    <div id="cta" class="title">CARD INFORMATION</div>
+                    <form id="cc-form">
+                        <div class="form-wrapper">
+                            <input type="text" id="fname" name="fname" class="letters-only" placeholder="First Name" required>
+                            <input type="text" id="lname" name="lname" class="letters-only" placeholder="Last Name" required >
+                            <div class="clear">
+                                <input type="text" id="credit-card" name="card" maxlength="21" class="numbers-only" placeholder="Credit Card Number" required></div>
+                            <input type="text" id="exp" name="exp" maxlength='5' class="date-format" placeholder="Exp. Date" required>
+                            <input type="text" id="cvv" name="cvv" class="numbers-only" maxlength="4" placeholder="CVV/CVC Code" required>
+                            <div class="credit-cards">
+                                <div class="visa card"></div>
+                                <div class="mc card"></div>
+                                <div class="amex card"></div>
+                                <div class="disc card"></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="billing-address">
+                                <span>Billing Address same as <input type="radio" name="billing-address" value="From Address" checked/> From Address <input type="radio" name="billing-address" value="New Address"> New Address</span>
+                            </div>
+                            <div id="new-address-container">
+                                <div id="new-address-title" class="title">NEW ADDRESS</div>
+                                <input type="text" id="new-address" class="address" name="new-address" placeholder="Address">
+                                <input type="text" id="new-apt" class="apt" name="new-apt" placeholder="Apt/Suite"><br/>
+                                <input type="text" id="new-city" class="city letters-only" name="new-city" placeholder="City">
+                                <input type="text" id="new-state" class="state letters-only" maxlength="2" name="new-state" placeholder="State" >
+                                <input type="text" id="new-zip" class="zip numbers-only" maxlength="5" name="new-zip" placeholder="Zip">
+                            </div>
+                        </div>
+                        <div class="divider two"></div>
+                        <div id="final">
+                            <div id="terms-box">
+                                <div class="squaredTwo">
+                                    <input type="checkbox" id="terms" name="terms" value="agree" required/><label for="terms"></label> 
+                                </div>
+                                <span>I have read the <a href='#'>Terms & Conditions</a> of this estimate.</span>
+                            </div>
+                            <div id="deposit">
+                                <div id="deposit-due"> DEPOSIT DUE TODAY <div class="icon"></div></div>
+                                <div id="deposit-total">
+                                    $50.00
+                                </div>
+                                <div class="step-button step-4 disabled"><div class="inner">RESERVE NOW</div></div>
+
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="step-box off receipt" id="step-box-5">
+                    <div class="instructions">Thank You!</div>
+                    <div class="print-btn"></div>
+                    <div class="message">
+                        Your trailer has been reserved. Your reference number is <span class="reference"><strong><?php echo $leadData->lead_id; ?></strong></span>. If you have any questions, give us a call at <strong>(888) 414 - 2016</strong>.
+                    </div>
+                    <div class="divider"></div>
+                    <div class="bottom">
+                        <div class="order-details">
+                            <div id="grey-box">
+                                <div class="title">Order Details</div>
+                                <div class="info-box" id="card-details">
+                                    <div class="heading">Card Details</div>
+                                    <div class="name"></div>
+                                    <div class="cc-card visa"></div>	
+                                </div>
+                                <div class="info-box" id="billing-details">
+                                    <div class="heading">Billing Details</div>
+                                    <div class="streetaddress"></div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="info-box" id="email-details">
+                                    <div class="heading">Email Address</div>
+                                    <div class="email"></div>
+                                </div>
+                                <div class="info-box" id="charged-details">
+                                    <div class="heading">Charged Today<img class="icon" src="beta/img/info-icon.svg"/><div class="popup">Your $50 deposit is non-refundable.</div></div>
+                                    <div class="deposit">$50.00</div>
+                                    
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="estimate-balance">Estimated Balance Due <span class="total">$2,596.90</span> </div>
+                        </div>
+                        <div class="service-details">
+                            <h2>SERVICE DETAILS</h2>
+                            <div id="trailer-space">
+                                <div class="title">Trailer Space</div>
+                                <div class="trailer"><span class="feet">7</span>' of Trailer Length</div>
+                                <div id="trailer-length">
+                                    <div id="feet-container">
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                        <div class="foot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="drop-off">
+                                <div id='drop-off-1'>
+                                    <div class="title">Drop Off Location</div>
+                                    <div class="drop-off-address">
+                                       
+                                    </div>
+                                </div>
+                                <div id="drop-off-2">
+                                    <div class="title">Drop-off Date</div>
+                                    <div class="drop-off-date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--preload later images to reduce flashing -->
+<img class="hidden" src="img/trailer-bg.png"/>
+<img class="hidden" src="img/cc-sprite.svg"/>
+<img class="hidden" src="img/printer-icon.svg"/>
+<!--preloads fonts for later pages -->
+<span class="hidden heavy">.</span>
+<span class="hidden light">.</span>
+<span class="hidden oblique">.</span>
+<!--need hidden spans to get widths for Verify inputs resizing-->
+<span class="hidden full_name"></span>
+<span class="hidden phone"></span>
+<span class="hidden email"></span>
+<span class="hidden from_address2"></span>
+<span class="hidden move_address"></span>
+<span class="hidden move_date2"></span>
+<span class="hidden trailer_feet"></span>
+<!--  -->
+<div class="zip-help-container" style="display:none;">
+    <span>ZIPCode Helper</span>
+    <div class="search-result">
+        <input type="text" class='auto-address' placeholder="City, State"/>
+        <div class="zip-helper-result" id="results" style="display:none;">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>

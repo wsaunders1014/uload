@@ -9,15 +9,17 @@
 		<title> </title>
 		<meta name="description" content="">
 		<meta name="robots" content="noindex,follow">
-		<link rel="stylesheet" type="text/css" href="css/style.all.css" inline>
+		<link rel="stylesheet" type="text/css" href="css/move-info/style.all.css" inline>
 	</head>
 	<body>
 		<header>
-			<div id="logo"></div>
-			<div id="call-us">
-				<span class="icon"></span>
-				<span class="uload-number">(888) ULOAD-US</span>
-				<a href="tel:888-856-2387"></a>
+			<div class="center">
+				<div id="logo"></div>
+				<div id="call-us">
+					<span class="icon"></span>
+					<span class="uload-number">(888) ULOAD-US</span>
+					<a href="tel:888-856-2387"></a>
+				</div>
 			</div>
 		</header>
 		<div id="wrapper">
@@ -293,6 +295,6 @@
 
 			<!-- endinject -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="js/all.js"></script>
+		<script src="js/move-info/scripts.all.js"></script>
 	</body>
 </html>
